@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 기존의 bean.xml에서 설정했던 Bean들은 코드에 annotation으로
+	 설정해줬기 때문에 annot.xml은 component-scan만 작성해주면 된다.-->
+	<context:component-scan base-package="myspring.di.annot"/>
+	
+	<context:property-placeholder location="classpath:config/value.properties"/>
+
+</beans>
