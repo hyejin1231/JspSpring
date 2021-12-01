@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lec.sts13_jdbc.dao.BoardMapper">
+	<select id="Sql_select" resultType="Board">
+		select * from board order by wr_uid desc
+	</select>
+	
+	<select id="Sql_selectByUid" parameterType="string" resultType="Board">
+		select * from board where wr_uid = #{wr_uid}
+	</select>
+	
+	<insert id="Sql_insert" parameterType="Board">
+		insert into board (wr_uid, subject, content, name ) values (board_seq.nextval, #{subject}, #{content}, #{name})
+	</insert>
+	
+	<update id="Sql_update" parameterType="Board">
+		update board set subject = #{subject}, 
+		content = #{content}
+		where wr_uid = #{wr_uid}
+	</update>
+	
+	<update id="Sql_incViewCnt" parameterType="string">
+		update board set viewcnt = viewcnt + 1 where wr_uid = #{wr_uid}
+	</update>
+	
+	<delete id="Sql_delete" parameterType="string">
+		delete from board where wr_uid = #{wr_uid}
+	</delete>
+</mapper>
